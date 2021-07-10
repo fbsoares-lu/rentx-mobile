@@ -16,7 +16,9 @@ The GoFood application covers online delivery services. This application ensures
 </p>
 
   <br>
-    <img src="./src/assets/videogofood.gif"/>
+    <video width="870" height="500" controls>
+       <source src="./src/assets/video.mp4" type="video/mp4">
+    </video>
   </br>
 
 
