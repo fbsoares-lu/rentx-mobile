@@ -4,7 +4,7 @@
   </br>
 </h1>
 
-The GoFood application covers online delivery services. This application ensures that a user can place an order at a time to a particular restaurant or establishment, in which establishments can maintain contact with the customer requesting the order.
+The rentx app aims to provide a better experience for those who need to rent a car.
 
 <p align="center">
   <a href="http://makeapullrequest.com">
@@ -16,9 +16,7 @@ The GoFood application covers online delivery services. This application ensures
 </p>
 
   <br>
-    <video width="870" height="500" controls>
-       <source src="./src/assets/video.mp4" type="video/mp4">
-    </video>
+    <img src="./src/assets/capa.png"/>
   </br>
 
 
@@ -38,7 +36,7 @@ In addition it is essential to have a text editor to work with the code like [VS
 
 ```bash
 # clone this repository
-$ git clone <https://github.com/fbsoares-lu/gofood.git>
+$ git clone <https://github.com/fbsoares-lu/rentx-mobile.git>
 
 
 # Go to the project folder
