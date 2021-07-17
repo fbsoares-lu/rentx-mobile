@@ -36,7 +36,7 @@ interface RentalPeriod {
 
 interface Params {
     car: CarDTO;
-  }
+}
 
 export function Scheduling(){
     const [markedDates, setMarkedDates] = useState<MarkedDateProps>({} as MarkedDateProps);
