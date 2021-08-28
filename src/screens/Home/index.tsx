@@ -10,7 +10,7 @@ import { useTheme } from 'styled-components';
 import { CarDTO } from '../../dtos/CarDTO';
 
 import { Car } from '../../components/Car';
-import { Load } from '../../components/Load';
+import { LoadAnimation } from '../../components/LoadAnimation';
 
 import Logo from '../../assets/logo.svg';
 
@@ -22,8 +22,6 @@ import {
     CarList,
     MyCarButton
 } from './styles';
-
-
 
 export function Home(){
   const [cars, setCars] = useState<CarDTO[]>([]);
@@ -84,7 +82,7 @@ export function Home(){
           }
         </HeaderContent>
       </Header>
-      { isLoading ? <Load/> :
+      { isLoading ? <LoadAnimation/> :
         <CarList
           data={cars}
           keyExtractor={item => String(item.id)}
