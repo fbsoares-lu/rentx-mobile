@@ -27,8 +27,6 @@ import {
     CarFooterDate,
 } from './styles';
 
-
-
 interface CarProps {
     id: string;
     user_id: string;
