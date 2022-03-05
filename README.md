@@ -40,7 +40,7 @@ $ git clone <https://github.com/fbsoares-lu/rentx-mobile.git>
 
 
 # Go to the project folder
-$ cd gofood
+$ cd rentx-mobile
 
 # Install all dependencies
 $ yarn
