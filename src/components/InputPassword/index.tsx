@@ -14,7 +14,7 @@ interface InputProps extends TextInputProps {
 function InputPassword({ iconName, value, ...rest }: InputProps) {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
-  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
+  const [isVisiblePassword, setIsVisiblePassword] = useState(true);
 
   const theme = useTheme();
 
