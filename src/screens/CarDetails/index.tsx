@@ -1,46 +1,46 @@
-import React from 'react';
-import { useTheme } from 'styled-components';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { StatusBar, StyleSheet } from 'react-native';
+import React from "react";
+import { useTheme } from "styled-components";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
+import { StatusBar, StyleSheet } from "react-native";
 
 import Animated, {
   useSharedValue,
   useAnimatedScrollHandler,
   useAnimatedStyle,
   interpolate,
-  Extrapolate
-} from 'react-native-reanimated';
+  Extrapolate,
+} from "react-native-reanimated";
 
-import { Accessory } from '../../components/Accessory';
-import { BackButton } from '../../components/BackButton';
-import { ImageSlider } from '../../components/ImageSlider';
-import { Button } from '../../components/Button';
+import { Accessory } from "../../components/Accessory";
+import { BackButton } from "../../components/BackButton";
+import { ImageSlider } from "../../components/ImageSlider";
+import { Button } from "../../components/Button";
 
-import { CarDTO } from '../../dtos/CarDTO';
-import { getAccessoryIcon } from '../../utils/getAcessoryIcon';
+import { CarDTO } from "../../dtos/CarDTO";
+import { getAccessoryIcon } from "../../utils/getAcessoryIcon";
 
 import {
-    Container,
-    Header,
-    CarImages,
-    Details,
-    Description,
-    Brand,
-    Name,
-    Rent,
-    Period,
-    Price,
-    About,
-    Accessories,
-    Footer
-} from './styles';
+  Container,
+  Header,
+  CarImages,
+  Details,
+  Description,
+  Brand,
+  Name,
+  Rent,
+  Period,
+  Price,
+  About,
+  Accessories,
+  Footer,
+} from "./styles";
 
 interface Params {
   car: CarDTO;
 }
 
-export function CarDetails(){
+export function CarDetails() {
   const navigation = useNavigation();
   const route = useRoute();
   const { car } = route.params as Params;
@@ -48,7 +48,7 @@ export function CarDetails(){
   const theme = useTheme();
 
   const scrollY = useSharedValue(0);
-  const scrollHandler = useAnimatedScrollHandler(event => {
+  const scrollHandler = useAnimatedScrollHandler((event) => {
     scrollY.value = event.contentOffset.y;
   });
 
@@ -60,43 +60,40 @@ export function CarDetails(){
         [200, 70],
         Extrapolate.CLAMP
       ),
-    }
-  })
+    };
+  });
 
   const sliderCarsStyleAnimation = useAnimatedStyle(() => {
     return {
-      opacity: interpolate(
-        scrollY.value,
-        [0, 150],
-        [1, 0],
-        Extrapolate.CLAMP
-      )
-    }
-  })
+      opacity: interpolate(scrollY.value, [0, 150], [1, 0], Extrapolate.CLAMP),
+    };
+  });
 
   function handleConfirmRental() {
-    navigation.navigate('Scheduling', {
-      car
-    })
+    navigation.navigate("Scheduling", {
+      car,
+    });
   }
 
   function handleBack() {
     navigation.goBack();
   }
 
-  return(
+  return (
     <Container>
-      <StatusBar  
+      <StatusBar
         barStyle="dark-content"
         translucent
         backgroundColor="transparent"
       />
 
-      <Animated.View style={[
-        headerStyleAnimation, 
-        styles.header,
-        { backgroundColor: theme.colors.background_secondary}
-      ]}>
+      <Animated.View
+        style={[
+          headerStyleAnimation,
+          styles.header,
+          { backgroundColor: theme.colors.background_secondary },
+        ]}
+      >
         <Header>
           <BackButton onPress={handleBack} />
         </Header>
@@ -124,21 +121,19 @@ export function CarDetails(){
           </Description>
 
           <Rent>
-            <Period>{car.rent.period}</Period>
-            <Price>R$ {car.rent.price}</Price>
+            <Period>{car.period}</Period>
+            <Price>R$ {car.price}</Price>
           </Rent>
         </Details>
 
         <Accessories>
-          {
-            car.accessories.map(accessory => (
-              <Accessory 
-                key={accessory.type}
-                name={accessory.name} 
-                icon={getAccessoryIcon(accessory.type)} 
-              />
-            ))
-          }
+          {car.accessories.map((accessory) => (
+            <Accessory
+              key={accessory.type}
+              name={accessory.name}
+              icon={getAccessoryIcon(accessory.type)}
+            />
+          ))}
         </Accessories>
 
         <About>
@@ -151,8 +146,8 @@ export function CarDetails(){
       </Animated.ScrollView>
 
       <Footer>
-        <Button 
-          title="Escolher período de aluguel" 
+        <Button
+          title="Escolher período de aluguel"
           onPress={handleConfirmRental}
         />
       </Footer>
@@ -162,11 +157,11 @@ export function CarDetails(){
 
 const styles = StyleSheet.create({
   header: {
-    position: 'absolute',
-    overflow: 'hidden',
+    position: "absolute",
+    overflow: "hidden",
     zIndex: 1,
   },
   back: {
-    marginTop: 24
-  }
-})
+    marginTop: 24,
+  },
+});

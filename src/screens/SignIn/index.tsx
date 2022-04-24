@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import * as Yup from "yup";
 
+import { useAuth } from "../../hooks/auth";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { InputPassword } from "../../components/InputPassword";
@@ -20,6 +21,7 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
+  const { signIn } = useAuth();
 
   function handleNewAccount() {
     navigation.navigate("SignUpFirstStep");
@@ -35,7 +37,7 @@ function SignIn() {
       });
 
       await schema.validate({ email, password });
-      Alert.alert("Conta criada");
+      signIn({ email, password });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         return Alert.alert("Opa", error.message);
